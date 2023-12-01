@@ -44,6 +44,26 @@ const AddTask = ({ addTask }) => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+
+          if (data.insertedId) {
+            Swal.fire({
+              title: "Task is added successfully",
+              showClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `,
+              },
+              hideClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `,
+              },
+            });
+          }
         });
 
       setTitle("");
