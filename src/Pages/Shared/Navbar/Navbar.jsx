@@ -1,23 +1,23 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex items-center justify-between">
         <div className="text-white font-bold text-lg">
-          TAsk Management System
+          Task Management System
         </div>
 
-        {/* Navigation Links */}
         <div className="hidden md:flex space-x-4">
-          <a href="#" className="text-white hover:text-gray-300">
+          <NavLink to="/" className="text-white hover:text-gray-300">
             Home
-          </a>
-          <a href="#" className="text-white hover:text-gray-300">
-            Add Task
-          </a>
-          <a href="#" className="text-white hover:text-gray-300">
+          </NavLink>
+          <NavLink to="/addtask" className="text-white hover:text-gray-300">
+            AddTask
+          </NavLink>
+          <NavLink to="/about" className="text-white hover:text-gray-300">
             About
-          </a>
+          </NavLink>
         </div>
 
         <div className="md:hidden">
@@ -44,15 +44,15 @@ const Navbar = () => {
       </div>
 
       <div id="responsive-nav-links" className="md:hidden mt-2 hidden">
-        <a href="#" className="block text-white py-2 hover:text-gray-300">
+        <NavLink to="/" className="text-white hover:text-gray-300">
           Home
-        </a>
-        <a href="#" className="block text-white py-2 hover:text-gray-300">
+        </NavLink>
+        <NavLink to="/addtask" className="text-white hover:text-gray-300">
           AddTask
-        </a>
-        <a href="#" className="block text-white py-2 hover:text-gray-300">
+        </NavLink>
+        <NavLink to="/about" className="text-white hover:text-gray-300">
           About
-        </a>
+        </NavLink>
       </div>
     </nav>
   );
