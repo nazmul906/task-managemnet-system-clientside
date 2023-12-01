@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const AddTask = ({ addTask }) => {
   const [title, setTitle] = useState("");
@@ -32,9 +33,19 @@ const AddTask = ({ addTask }) => {
       };
 
       // Add the new task to the task list
-      addTask(newTask);
+      console.log(newTask);
+      fetch("http://localhost:5000/addtask", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
 
-      // Clear the form fields
       setTitle("");
       setDescription("");
       setStatus("pending");
