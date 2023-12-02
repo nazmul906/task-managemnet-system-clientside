@@ -123,18 +123,23 @@ const TaskCard = ({ alltask, onDelete, onEdit }) => {
 
               <div className="mb-4">
                 <label
-                  htmlFor="editedStatus"
+                  htmlFor="status"
                   className="block text-gray-700 text-sm font-bold mb-2"
                 >
                   Status
                 </label>
-                <input
-                  type="text"
-                  id="editedStatus"
-                  value={editedStatus}
+                <select
+                  id="status"
+                  name="status"
+                  value={status}
                   onChange={(e) => setEditedStatus(e.target.value)}
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-                />
+                  required
+                >
+                  <option value="pending">Pending</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="completed">Completed</option>
+                </select>
               </div>
 
               <div className="">
