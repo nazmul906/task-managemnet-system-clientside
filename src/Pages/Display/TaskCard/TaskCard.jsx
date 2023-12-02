@@ -1,38 +1,56 @@
 import React, { useState } from "react";
 import "./taskcard.css";
+import Swal from "sweetalert2";
+
 const TaskCard = ({ alltask }) => {
-  console.log("card", alltask);
   const { _id, title, description, status } = alltask;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editedTitle, setEditedTitle] = useState(title);
   const [editedDescription, setEditedDescription] = useState(description);
   const [editedStatus, setEditedStatus] = useState(status);
+
   const [editItemId, setEditItemId] = useState(null);
 
-  const handleEdit = (id) => {
-    // Implement your edit logic here
-    console.log("Edit task with ID:", id);
-    // console.log("Edited Title:", editedTitle);
-    // console.log("Edited Description:", editedDescription);
+  const handleEdit = (_id) => {
     setIsModalOpen(true);
-    setEditItemId(id);
+    setEditItemId(_id);
+  };
+
+  const handleSave = () => {
+    fetch(`http://localhost:5000/update/${editItemId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: editedTitle,
+        description: editedDescription,
+        status: editedStatus,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Update response:", data);
+
+        if (data.modifiedCount > 0) {
+          Swal.fire("Task is updated");
+        }
+        setIsModalOpen(false);
+      });
   };
 
   const handleClose = () => {
     setIsModalOpen(false);
     setEditItemId(null);
-    setFeedback("");
   };
+
   return (
-    <div
-      key={_id}
-      className="card w-96 bg-white h-full shadow-2xl rounded-lg p-4 "
-    >
+    <div className="card w-96 bg-white h-full shadow-2xl rounded-lg p-4">
       <div className="card-body items-center text-center">
-        <h3 className="text-xl font-semibold mb-2 text-gray-600 ">{title}</h3>
+        <h3 className="text-xl font-semibold mb-2 text-gray-600">{title}</h3>
         <p className="text-gray-600 mb-2">{description}</p>
-        <p className="text-xl font-semibold text-gray-600 ">{status}</p>
+        <p className="text-xl font-semibold text-gray-600">{status}</p>
         <div className="">
           <button
             onClick={() => handleEdit(_id)}
@@ -40,15 +58,15 @@ const TaskCard = ({ alltask }) => {
           >
             edit
           </button>
-          <button className="w-32  mt-4 bg-indigo-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out">
+          <button className="w-32 mt-4 bg-indigo-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out">
             delete
           </button>
         </div>
       </div>
       {isModalOpen && (
-        <dialog id="my_modal_3" className="modal-overlay" open>
-          <div>
-            <form className="modal" style={{ height: "28rem" }}>
+        <div id="my_modal_3" className="modal-overlay">
+          <div className="modal" style={{ height: "28rem" }}>
+            <form>
               <div className="mb-4">
                 <label
                   htmlFor="editedTitle"
@@ -100,7 +118,7 @@ const TaskCard = ({ alltask }) => {
               <div className="">
                 <button
                   type="button"
-                  onClick={handleEdit}
+                  onClick={handleSave}
                   className="w-32 mr-2 bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out"
                 >
                   Save
@@ -108,14 +126,14 @@ const TaskCard = ({ alltask }) => {
                 <button
                   type="button"
                   onClick={handleClose}
-                  className=" w-32 bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out"
+                  className="w-32 bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out"
                 >
                   Close
                 </button>
               </div>
             </form>
           </div>
-        </dialog>
+        </div>
       )}
     </div>
   );
