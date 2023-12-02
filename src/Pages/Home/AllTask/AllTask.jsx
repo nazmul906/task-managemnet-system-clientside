@@ -22,7 +22,7 @@ const AllTask = () => {
     setAllTask(updatedTasks);
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-8 ">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 text-center gap-[2.5rem] mb-2 p-[2.5rem]">
         {alltask.map((item) => (
           <TaskCard

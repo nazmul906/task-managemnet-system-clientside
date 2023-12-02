@@ -65,7 +65,7 @@ const TaskCard = ({ alltask, onDelete, onEdit }) => {
       });
   };
   return (
-    <div className="card w-96 bg-white h-full shadow-2xl rounded-lg p-4">
+    <div className="card bg-white h-full shadow-2xl rounded-lg p-4">
       <div className="card-body items-center text-center">
         <h3 className="text-xl font-semibold mb-2 text-gray-600">{title}</h3>
         <p className="text-gray-600 mb-2">{description}</p>

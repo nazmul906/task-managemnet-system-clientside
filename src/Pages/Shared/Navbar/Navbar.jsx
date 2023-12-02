@@ -43,7 +43,10 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div id="responsive-nav-links" className="md:hidden mt-2 hidden">
+      <div
+        id="responsive-nav-links"
+        className="md:hidden flex flex-col items-center mt-2 p-3 gap-3 hidden"
+      >
         <NavLink to="/" className="text-white hover:text-gray-300">
           Home
         </NavLink>

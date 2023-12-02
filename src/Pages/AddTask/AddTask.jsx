@@ -74,11 +74,14 @@ const AddTask = ({ addTask }) => {
   };
 
   return (
-    <form className="max-w-md mx-auto mt-6" onSubmit={handleSubmit}>
+    <form
+      className="max-w-md mx-auto mt-6 mb-6 p-[2rem]"
+      onSubmit={handleSubmit}
+    >
       <div className="mb-4">
         <label
           htmlFor="title"
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold mb-2 "
         >
           Title
         </label>
@@ -101,7 +104,7 @@ const AddTask = ({ addTask }) => {
       <div className="mb-4">
         <label
           htmlFor="description"
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold mb-2 "
         >
           Description
         </label>
@@ -124,7 +127,7 @@ const AddTask = ({ addTask }) => {
       <div className="mb-4">
         <label
           htmlFor="status"
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold mb-2 "
         >
           Status
         </label>
