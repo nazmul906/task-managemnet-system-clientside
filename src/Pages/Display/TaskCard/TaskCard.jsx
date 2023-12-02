@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./taskcard.css";
 import Swal from "sweetalert2";
-import AllTask from "../../Home/AllTask/AllTask";
 
-const TaskCard = ({ alltask, onDelete }) => {
+const TaskCard = ({ alltask, onDelete, onEdit }) => {
   const { _id, title, description, status } = alltask;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,9 +34,15 @@ const TaskCard = ({ alltask, onDelete }) => {
         console.log("Update response:", data);
 
         if (data.modifiedCount > 0) {
-          Swal.fire("Task is updated");
+          Swal.fire("Task is updated").then(() => {
+            onEdit(_id, {
+              title: editedTitle,
+              description: editedDescription,
+              status: editedStatus,
+            });
+            setIsModalOpen(false);
+          });
         }
-        setIsModalOpen(false);
       });
   };
 

@@ -15,7 +15,12 @@ const AllTask = () => {
     const remainingTasks = alltask.filter((task) => task._id !== taskId);
     setAllTask(remainingTasks);
   };
-
+  const handleEditTask = (taskId, updatedTask) => {
+    const updatedTasks = alltask.map((task) =>
+      task._id === taskId ? { ...task, ...updatedTask } : task
+    );
+    setAllTask(updatedTasks);
+  };
   return (
     <div className="flex justify-center">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 text-center gap-[2.5rem] mb-2 p-[2.5rem]">
@@ -24,6 +29,7 @@ const AllTask = () => {
             key={item._id}
             alltask={item}
             onDelete={handleDeleteTask}
+            onEdit={handleEditTask}
           ></TaskCard>
         ))}
       </div>
