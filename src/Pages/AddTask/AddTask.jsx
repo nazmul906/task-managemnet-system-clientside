@@ -34,7 +34,7 @@ const AddTask = ({ addTask }) => {
 
       // Add the new task to the task list
       console.log(newTask);
-      fetch("http://localhost:5000/addtask", {
+      fetch("https://taskmanager-dgsc.onrender.com/addtask", {
         method: "POST",
         headers: {
           "content-type": "application/json",

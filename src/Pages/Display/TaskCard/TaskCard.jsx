@@ -18,7 +18,7 @@ const TaskCard = ({ alltask, onDelete, onEdit }) => {
   };
 
   const handleSave = () => {
-    fetch(`http://localhost:5000/update/${editItemId}`, {
+    fetch(`https://taskmanager-dgsc.onrender.com/update/${editItemId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const TaskCard = ({ alltask, onDelete, onEdit }) => {
   };
 
   const handledelete = (_id) => {
-    fetch(`http://localhost:5000/deletetask/${_id}`, {
+    fetch(`https://taskmanager-dgsc.onrender.com/deletetask/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

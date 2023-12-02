@@ -4,7 +4,7 @@ import TaskCard from "../../Display/TaskCard/TaskCard";
 const AllTask = () => {
   const [alltask, setAllTask] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/alltask", {
+    fetch("https://taskmanager-dgsc.onrender.com/alltask", {
       method: "GET",
       headers: { "content-type": "application/json" },
     })
