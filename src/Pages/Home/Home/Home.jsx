@@ -3,6 +3,7 @@ import AllTask from "../AllTask/AllTask";
 import Banner from "../Banner/Banner";
 import Feature from "../Feature/Feature";
 import Pricing from "../Pricing/Pricing";
+import FAQ from "../FAQ/FAQ";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <AllTask></AllTask>
       <Feature></Feature>
       <Pricing></Pricing>
+      <FAQ></FAQ>
     </div>
   );
 };
