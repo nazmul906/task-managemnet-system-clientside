@@ -7,7 +7,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="flex mb-10">
+    <div className="flex p-10 bg-[#A2F2D2]">
       <div className="flex-1">
         {" "}
         <h1 className="text-6xl ml-[5rem] mt-[6.7rem]">Task Manager</h1>
